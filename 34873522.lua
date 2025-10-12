@@ -119,7 +119,7 @@ local function StatsFunc(stats)
                 }
             }
             SkillPoints:FireServer(unpack(args))
-            taks.wait(5)
+            task.wait(5)
         end
     elseif stats == "Energy" then
         while Config.Settings.ToggleStatsEnergy == true do
@@ -131,7 +131,7 @@ local function StatsFunc(stats)
                 }
             }
             SkillPoints:FireServer(unpack(args))
-            taks.wait(5)
+            task.wait(5)
         end
     elseif stats == "Coins" then
         while Config.Settings.ToggleStatsCoins == true do
@@ -143,7 +143,7 @@ local function StatsFunc(stats)
                 }
             }
             SkillPoints:FireServer(unpack(args))
-            taks.wait(5)
+            task.wait(5)
         end
     elseif stats == "Luck" then
         while Config.Settings.ToggleStatsLuck == true do
@@ -155,7 +155,7 @@ local function StatsFunc(stats)
                 }
             }
             SkillPoints:FireServer(unpack(args))
-            taks.wait(5)
+            task.wait(5)
         end
     end
 end
