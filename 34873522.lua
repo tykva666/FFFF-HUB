@@ -281,7 +281,7 @@ PlayerTab:CreateToggle({
     end,
 })
 
-local StatsTab = Window:CreateTab("Stats", "chart-bar")
+local StatsTab = Window:CreateTab("Stats", "book-plus")
 
 StatsTab:CreateSection("Level Stats Tab")
 
