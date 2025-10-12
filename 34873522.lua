@@ -281,7 +281,7 @@ PlayerTab:CreateToggle({
     end,
 })
 
-local StatsTab = Window:CreateTab("Stats", "chart-no-axes-column-increasing")
+local StatsTab = Window:CreateTab("Stats", "chart-column")
 
 StatsTab:CreateSection("Level Stats Tab")
 
