@@ -105,58 +105,71 @@ local function WalkFuncSpeed(Value)
     end
 end
 
-local function StatsFunc(stats)
+local function StatsFuncDamage()
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
     local SkillPoints = ReplicatedStorage.Events.To_Server
+    local args = {
+        {
+            Name = "Primary_Damage",
+            Action = "Assign_Level_Stats",
+            Amount = 1
+        }
+    }
 
-    if stats == "Damage" then
-        while Config.Settings.ToggleStatsDamage == true do
-            local args = {
-                {
-                    Name = "Primary_Damage",
-                    Action = "Assign_Level_Stats",
-                    Amount = 1
-                }
-            }
-            SkillPoints:FireServer(unpack(args))
-            task.wait(5)
-        end
-    elseif stats == "Energy" then
-        while Config.Settings.ToggleStatsEnergy == true do
-            local args = {
-                {
-                    Name = "Primary_Energy",
-                    Action = "Assign_Level_Stats",
-                    Amount = 1
-                }
-            }
-            SkillPoints:FireServer(unpack(args))
-            task.wait(5)
-        end
-    elseif stats == "Coins" then
-        while Config.Settings.ToggleStatsCoins == true do
-            local args = {
-                {
-                    Name = "Primary_Coins",
-                    Action = "Assign_Level_Stats",
-                    Amount = 1
-                }
-            }
-            SkillPoints:FireServer(unpack(args))
-            task.wait(5)
-        end
-    elseif stats == "Luck" then
-        while Config.Settings.ToggleStatsLuck == true do
-            local args = {
-                {
-                    Name = "Primary_Luck",
-                    Action = "Assign_Level_Stats",
-                    Amount = 1
-                }
-            }
-            SkillPoints:FireServer(unpack(args))
-            task.wait(5)
-        end
+    while Config.Settings.ToggleStatsDamage == true do
+        SkillPoints:FireServer(unpack(args))
+        task.wait(5)
+    end
+end
+
+local function StatsFuncEnergy()
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local SkillPoints = ReplicatedStorage.Events.To_Server
+    local args = {
+        {
+            Name = "Primary_Energy",
+            Action = "Assign_Level_Stats",
+            Amount = 1
+        }
+    }
+
+    while Config.Settings.ToggleStatsEnergy == true do
+        SkillPoints:FireServer(unpack(args))
+        task.wait(5)
+    end
+end
+
+local function StatsFuncCoins()
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local SkillPoints = ReplicatedStorage.Events.To_Server
+    local args = {
+        {
+            Name = "Primary_Coins",
+            Action = "Assign_Level_Stats",
+            Amount = 1
+        }
+    }
+
+    while Config.Settings.ToggleStatsCoins == true do
+        SkillPoints:FireServer(unpack(args))
+        task.wait(5)
+    end
+end
+
+local function StatsFuncLuck()
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local SkillPoints = ReplicatedStorage.Events.To_Server
+    local args = {
+        {
+            Name = "Primary_Luck",
+            Action = "Assign_Level_Stats",
+            Amount = 1
+        }
+    }
+
+    while Config.Settings.ToggleStatsLuck == true do
+        SkillPoints:FireServer(unpack(args))
+        task.wait(5)
     end
 end
 
@@ -290,7 +303,7 @@ StatsTab:CreateToggle({
     Flag = "ToggleStatsDamage",
     Callback = function(Value)
         Config.Settings.ToggleStatsDamage = Value
-        StatsFunc("Damage")
+        StatsFuncDamage()
     end,
 })
 
@@ -299,7 +312,7 @@ StatsTab:CreateToggle({
     Flag = "ToggleStatsEnergy",
     Callback = function(Value)
         Config.Settings.ToggleStatsEnergy = Value
-        StatsFunc("Energy")
+        StatsFuncEnergy()
     end,
 })
 
@@ -308,7 +321,7 @@ StatsTab:CreateToggle({
     Flag = "ToggleStatsCoins",
     Callback = function(Value)
         Config.Settings.ToggleStatsCoins = Value
-        StatsFunc("Coins")
+        StatsFuncCoins()
     end,
 })
 
@@ -317,7 +330,7 @@ StatsTab:CreateToggle({
     Flag = "ToggleStatsLuck",
     Callback = function(Value)
         Config.Settings.ToggleStatsLuck = Value
-        StatsFunc("Luck")
+        StatsFuncLuck()
     end,
 })
 
