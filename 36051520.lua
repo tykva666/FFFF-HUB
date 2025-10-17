@@ -67,7 +67,7 @@ local function AutoFuncCollect()
 
     while Config.Settings.ToggleAutoCollect do
         for i = 1, 100 do
-            local hive = workspace.Plots.Model.Hives[tostring(i)]
+            local hive = workspace:WaitForChild("Plots"):WaitForChild("Model"):WaitForChild("Hives"):WaitForChild(tostring(i))
             RemoteEvent:FireServer("ExtractHoney", {hive})
         end
         task.wait(5)
@@ -76,7 +76,7 @@ end
 
 local function AutoFuncSell()
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
-    
+
     while Config.Settings.ToggleAutoSell do
         local RemoteEvent = ReplicatedStorage.Framework.Features.HoneySystem.HoneyUtil.RemoteEvent
 
