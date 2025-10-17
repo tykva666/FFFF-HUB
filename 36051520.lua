@@ -132,3 +132,5 @@ FarmTab:CreateToggle({
         AutoFuncSell()
     end,
 })
+
+Rayfield:LoadConfiguration()
