@@ -71,14 +71,12 @@ local function AutoFuncCollect()
     local Hives = workspace.Plots.Model.Hives
 
     while Config.Settings.ToggleAutoCollect do
-        local hives = Hives:GetChildren()
 
-        for i = 1, #hives do
-            RemoteEvent:FireServer("ExtractHoney", {hives[i]})
+        for i, v in pairs(Hives:GetChildren()) do
+            RemoteEvent:FireServer("ExtractHoney", {Hives[tostring(v)]})
         end
-
+        
         task.wait(5)
-
     end
 end
 
