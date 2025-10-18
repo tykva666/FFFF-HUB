@@ -16,12 +16,12 @@ local Window = Rayfield:CreateWindow({
     ToggleUIKeybind = "K",
 
     ConfigurationSaving = {
-        Enabled = true,
+        Enabled = false,
         FolderName = "ffffhub",
         FileName = "ffffhubbab"
     },
 
-    KeySystem = true,
+    KeySystem = false,
     KeySettings = {
        Title = "FFFF HUB by MDream",
        Subtitle = "Key-inamo System",
@@ -93,14 +93,14 @@ local function AutoFuncSell()
     end
 end
 
-local function getItemList(shop)
-    local items = {}
+-- local function getItemList(shop)
+--     local items = {}
 
-    for _, item in ipairs(shop:GetChildren())
-        table.insert(items, item)
-    end
-    return items
-end
+--     for _, item in ipairs(shop:GetChildren())
+--         table.insert(items, item)
+--     end
+--     return items
+-- end
 
 MDreamNotif("Made by MDream", "Welcome to FFFF HUB ON TOP!", 10)
 
@@ -153,19 +153,19 @@ FarmTab:CreateToggle({
     end,
 })
 
-local FlowerShop = Window:CreateTab("Flower Shop", "badge-dollar-sign")
+-- local FlowerShop = Window:CreateTab("Flower Shop", "badge-dollar-sign")
 
-FlowerShop:CreateSection("Flower Shop Tab")
+-- FlowerShop:CreateSection("Flower Shop Tab")
 
-FlowerShop:CreateDropdown({
-    Name = "Select Seeds",
-    Options = getItemList(FlowerShopList),
-    CurrentOption = {},
-    MultipleOptions = true,
-    Flag = "SelectFlowers",
-    Callback = function(selected)
-        print(selected)
-    end,
-})
+-- FlowerShop:CreateDropdown({
+--     Name = "Select Seeds",
+--     Options = getItemList(FlowerShopList),
+--     CurrentOption = {},
+--     MultipleOptions = true,
+--     Flag = "SelectFlowers",
+--     Callback = function(selected)
+--         print(selected)
+--     end,
+-- })
 
 Rayfield:LoadConfiguration()
