@@ -66,23 +66,21 @@ local function AutoFuncDepositHoney()
     end
 end
 
--- local function AutoFuncCollect()
---     local RemoteEvent = ReplicatedStorage.Framework.Features.HoneySystem.HiveUtil.RemoteEvent
+local function AutoFuncCollect()
+    local RemoteEvent = ReplicatedStorage.Framework.Features.HoneySystem.HiveUtil.RemoteEvent
+    local Hives = workspace.Plots.Model.Hives
 
+    while Config.Settings.ToggleAutoCollect do
+        local hives = Hives:GetChildren()
 
---     while Config.Settings.ToggleAutoCollect do
---         for i, v in pairs(workspace.Plots.Model.Hives:GetChildren()) do
---             local args = {
---                 "ExtractHoney",
---                 {
---                     workspace.Plots.Model.Hives[tostring(v)]
---                 }
---             }
---             RemoteEvent:FireServer(unpack(args))
---         end
---         task.wait(5)
---     end
--- end
+        for i = 1, #hives do
+            RemoteEvent:FireServer("ExtractHoney", {hives[i]})
+        end
+
+        task.wait(5)
+
+    end
+end
 
 local function AutoFuncSell()
     while Config.Settings.ToggleAutoSell do
