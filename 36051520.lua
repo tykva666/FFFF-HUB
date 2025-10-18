@@ -71,9 +71,9 @@ local function AutoFuncCollect()
     local Hives = workspace.Plots.Model.Hives
 
     while Config.Settings.ToggleAutoCollect do
-        local hives = Hives:GetChildren()
+        local max = Hives:GetChildren()
 
-        for i = 1, #hives do
+        for i = 1, #max do
             RemoteEvent:FireServer("ExtractHoney", {Hives[tostring(i)]})
         end
 
