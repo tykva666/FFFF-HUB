@@ -67,6 +67,8 @@ local function buyItem(choice, itemName)
     BuyStock:InvokeServer(unpack(args))
 end
 
+local 
+
 local function MDreamNotif(title, content, duration)
     Rayfield:Notify({
         Title = title,
@@ -111,11 +113,7 @@ BlocksTab:CreateDropdown({
     MultipleOptions = true,
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
-        -- selectedBlocks = selected
-
-        for _, blockName in ipairs(selected) do
-            print(blockName)
-        end
+        selectedBlocks = selected
     end,
 })
 
@@ -158,13 +156,10 @@ DefensesTab:CreateDropdown({
     end,
 })
 
-task.spawn(function()
-    while task.wait(1) do
-        if AutoBuyEnabledBlocks then
-            for _, blockName in ipairs(selectedBlocks) do
-                -- buyItem("Blocks", blockName.Name)
-                print(blockName.Name)
-            end
-        end
+while AutoBuyEnabledBlocks == true do
+    for _, blockName in ipairs(selectedBlocks) do
+        buyItem("Blocks", blockName)
+        print("working line 162")
     end
-end)
+    task.wait(1)
+end
