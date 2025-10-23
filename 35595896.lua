@@ -72,8 +72,8 @@ local function AutoBuyBlocks()
         for _, blockName in ipairs(selectedBlocks) do
             buyItem("Blocks", blockName)
             print("working line 74")
+            task.wait(1)
         end
-        task.wait(1)
     end
 end
 
