@@ -158,7 +158,7 @@ task.spawn(function()
     while task.wait(1) do
         if AutoBuyEnabledBlocks then
             for _, blockName in ipairs(selectedBlocks) do
-                buyItem("Blocks", blockName.Name)
+                -- buyItem("Blocks", blockName.Name)
                 print(blockName.Name)
             end
         end
