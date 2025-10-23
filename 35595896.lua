@@ -92,7 +92,7 @@ BlocksTab:CreateSection("Blocks Tab")
 BlocksTab:CreateDropdown({
     Name = "Select Blocks",
     Options = getItemList(selectBlocks),
-    CurrentOption = {},
+    CurrentOption = "",
     MultipleOptions = true,
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
