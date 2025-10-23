@@ -111,7 +111,7 @@ BlocksTab:CreateDropdown({
     MultipleOptions = true,
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
-        print("test")
+        selectedBlocks = selected
     end,
 })
 
@@ -158,7 +158,7 @@ task.spawn(function()
     while task.wait(1) do
         if AutoBuyEnabledBlocks then
             for _, blockName in ipairs(selectedBlocks) do
-                buyItem("Blocks", blockName)
+                buyItem("Blocks", blockName.Name)
             end
         end
     end
