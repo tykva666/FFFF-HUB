@@ -46,8 +46,8 @@ local selectDefenses = ReplicatedStorage.Items.Overworld.Blocks.Defenses
 
 local function getItemList(scrollFrame)
     local items = {}
-    for _, items in ipairs(scrollFrame:GetChildren()) do
-        table.insert(items)
+    for _, itemList in ipairs(scrollFrame:GetChildren()) do
+        table.insert(items, itemList.Name)
     end
     return items
 end
@@ -98,4 +98,4 @@ BlocksTab:CreateDropdown({
     Callback = function(selected)
         print(selected)
     end,
- })
+})
