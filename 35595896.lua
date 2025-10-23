@@ -99,3 +99,33 @@ BlocksTab:CreateDropdown({
         print(selected.Name)
     end,
 })
+
+local DecorTab = Window:CreateTab("Decor", "door-closed")
+
+DecorTab:CreateSection("Decor Tab")
+
+DecorTab:CreateDropdown({
+    Name = "Select Decor",
+    Options = getItemList(selectDecor),
+    CurrentOption = "",
+    MultipleOptions = true,
+    Flag = "DropdownSelectDecor",
+    Callback = function(selected)
+        print(selected.Name)
+    end,
+})
+
+local DefensesTab = Window:CreateTab("Defenses", "swords")
+
+DefensesTab:CreateSection("Defenses Tab")
+
+DefensesTab:CreateDropdown({
+    Name = "Select Defenses",
+    Options = getItemList(selectDefenses),
+    CurrentOption = "",
+    MultipleOptions = true,
+    Flag = "DropdownSelectDefenses",
+    Callback = function(selected)
+        print(selected.Name)
+    end,
+})
