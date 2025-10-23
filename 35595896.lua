@@ -114,7 +114,7 @@ BlocksTab:CreateDropdown({
         -- selectedBlocks = selected
 
         for _, blockName in ipairs(selected) do
-            print(blockName.Name)
+            print(blockName)
         end
     end,
 })
