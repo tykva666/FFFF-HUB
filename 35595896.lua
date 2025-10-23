@@ -42,6 +42,13 @@ local selectBlocks = ReplicatedStorage.Items.Overworld.Blocks.Blocks
 local selectDecor = ReplicatedStorage.Items.Overworld.Blocks.Decor
 local selectDefenses = ReplicatedStorage.Items.Overworld.Blocks.Defenses
 
+local BuyStock = ReplicatedStorage.Remotes.Functions.BuyStock
+
+local selectedBlocks = {}
+local selectedDecor = {}
+local selectedDefenses = {}
+local AutoBuyEnabledBlocks = false
+
 
 
 local function getItemList(scrollFrame)
@@ -50,6 +57,14 @@ local function getItemList(scrollFrame)
         table.insert(items, itemList.Name)
     end
     return items
+end
+
+local function buyItem(choice, itemName)
+    local args = {
+        choice,
+        itemName
+    }
+    BuyStock:InvokeServer(unpack(args))
 end
 
 local function MDreamNotif(title, content, duration)
@@ -92,11 +107,20 @@ BlocksTab:CreateSection("Blocks Tab")
 BlocksTab:CreateDropdown({
     Name = "Select Blocks",
     Options = getItemList(selectBlocks),
-    CurrentOption = "",
+    CurrentOption = {},
     MultipleOptions = true,
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
-        print(selected.Name)
+        selectedBlocks = selected
+    end,
+})
+
+BlocksTab:CreateToggle({
+    Name = "Enable Auto-Buy",
+    CurrentValue = false,
+    Flag = "ToggleAutoBuyBlocks",
+    Callback = function(Value)
+        AutoBuyEnabledBlocks = Value
     end,
 })
 
@@ -107,11 +131,11 @@ DecorTab:CreateSection("Decor Tab")
 DecorTab:CreateDropdown({
     Name = "Select Decor",
     Options = getItemList(selectDecor),
-    CurrentOption = "",
+    CurrentOption = {},
     MultipleOptions = true,
     Flag = "DropdownSelectDecor",
     Callback = function(selected)
-        print(selected.Name)
+        selectedDecor = selected
     end,
 })
 
@@ -122,10 +146,20 @@ DefensesTab:CreateSection("Defenses Tab")
 DefensesTab:CreateDropdown({
     Name = "Select Defenses",
     Options = getItemList(selectDefenses),
-    CurrentOption = "",
+    CurrentOption = {},
     MultipleOptions = true,
     Flag = "DropdownSelectDefenses",
     Callback = function(selected)
-        print(selected.Name)
+        selectedDefenses = selected
     end,
 })
+
+task.spawn(function()
+    while task.wait(1) do
+        if AutoBuyEnabledBlocks then
+            for _, blockName in ipairs(selectBlocks) do
+                buyItem("Blocks", blockName)
+            end
+        end
+    end
+end)
