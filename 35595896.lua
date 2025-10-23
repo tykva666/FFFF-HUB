@@ -46,8 +46,8 @@ local selectDefenses = ReplicatedStorage.Items.Overworld.Blocks.Defenses
 
 local function getItemList(scrollFrame)
     local items = {}
-    for _, itemList in ipairs(scrollFrame:GetChildren()) do
-        table.insert(items, itemList)
+    for _, items in ipairs(scrollFrame:GetChildren()) do
+        table.insert(items)
     end
     return items
 end
