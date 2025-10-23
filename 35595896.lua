@@ -111,7 +111,11 @@ BlocksTab:CreateDropdown({
     MultipleOptions = true,
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
-        selectedBlocks = selected
+        -- selectedBlocks = selected
+
+        for _, blockName in ipairs(selected) do
+            print(blockName.Name)
+        end
     end,
 })
 
