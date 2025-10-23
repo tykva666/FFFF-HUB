@@ -111,8 +111,7 @@ BlocksTab:CreateDropdown({
     MultipleOptions = true,
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
-        -- selectedBlocks = selected
-        print(unpack(selected.Name))
+        print("test")
     end,
 })
 
