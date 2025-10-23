@@ -85,7 +85,7 @@ MainTab:CreateButton({
     end,
 })
 
-local BlocksTab = Window:CreateTab("Blocks", "skull")
+local BlocksTab = Window:CreateTab("Blocks", "box")
 
 BlocksTab:CreateSection("Blocks Tab")
 
@@ -96,6 +96,6 @@ BlocksTab:CreateDropdown({
     MultipleOptions = true,
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
-        print(selected)
+        print(selected.Name)
     end,
 })
