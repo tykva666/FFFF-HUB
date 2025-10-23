@@ -112,8 +112,7 @@ BlocksTab:CreateDropdown({
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
         -- selectedBlocks = selected
-        local args = {selected}
-        print(unpack(args))
+        print(unpack(selected))
     end,
 })
 
