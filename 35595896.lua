@@ -112,7 +112,7 @@ BlocksTab:CreateDropdown({
     Flag = "DropdownSelectBlocks",
     Callback = function(selected)
         -- selectedBlocks = selected
-        print(unpack(selected))
+        print(unpack(selected.Name))
     end,
 })
 
