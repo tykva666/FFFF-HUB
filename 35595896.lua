@@ -1,1 +1,101 @@
+if not (game.PlaceId == 75366259315586) then -- build ur base
+    return
+end
 
+local LastUpDate = "Last Update: 10/23/25"
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+    Name = "FFFF HUB by MDream",
+    Icon = "skull",
+    LoadingTitle = "FFFF HUB",
+    LoadingSubtitle = "by MDream",
+    ShowText = "FFFF HUB",
+    Theme = "Amethyst",
+ 
+    ToggleUIKeybind = "K",
+
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = "ffffhub",
+        FileName = "ffffhubbub"
+    },
+
+    KeySystem = false,
+    KeySettings = {
+       Title = "FFFF HUB by MDream",
+       Subtitle = "Key-inamo System",
+       Note = "Kiss mo ko! di wag 😡",
+       FileName = "ffffhubkey",
+       SaveKey = true,
+       GrabKeyFromSite = false,
+       Key = {"bembemko"}
+    }
+})
+
+
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
+
+local selectBlocks = ReplicatedStorage.Items.Overworld.Blocks.Blocks
+local selectDecor = ReplicatedStorage.Items.Overworld.Blocks.Decor
+local selectDefenses = ReplicatedStorage.Items.Overworld.Blocks.Defenses
+
+
+
+local function getItemList(scrollFrame)
+    local items = {}
+    for _, itemList in ipairs(scrollFrame:GetChildren()) do
+        table.insert(items, itemList)
+    end
+    return items
+end
+
+local function MDreamNotif(title, content, duration)
+    Rayfield:Notify({
+        Title = title,
+        Content = content,
+        Duration = duration,
+        Image = "skull",
+    })
+end
+
+
+
+MDreamNotif("Made by MDream", "Welcome to FFFF HUB ON TOP!", 10)
+
+
+
+local MainTab = Window:CreateTab("Main", "skull")
+
+MainTab:CreateSection("Main Tab")
+
+MainTab:CreateLabel(gameName.Name, "gamepad-2")
+
+MainTab:CreateLabel(LastUpDate, "calendar-check")
+
+MainTab:CreateParagraph({Title = "Welcome to FFFF HUB by MDream! 💀", Content = "©2025 .defnotmdream. All rights reserved."})
+
+MainTab:CreateButton({
+    Name = "Join Discord! 💀",
+    Callback = function()
+        setclipboard("https://discord.gg/A86X5KnkrN")
+        MDreamNotif("Made by MDream", "Copied to clipboard: https://discord.gg/A86X5KnkrN", 5)
+    end,
+})
+
+local BlocksTab = Window:CreateTab("Blocks", "skull")
+
+BlocksTab:CreateSection("Blocks Tab")
+
+BlocksTab:CreateDropdown({
+    Name = "Select Blocks",
+    Options = getItemList(selectBlocks),
+    CurrentOption = {},
+    MultipleOptions = true,
+    Flag = "DropdownSelectBlocks",
+    Callback = function(selected)
+        print(selected)
+    end,
+ })
