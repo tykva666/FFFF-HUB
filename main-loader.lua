@@ -4,6 +4,8 @@ end
 
 task.wait( math.random() )
 
+local gscript = 'https://raw.githubusercontent.com/tykva666/FFFF-HUB/refs/heads/main/global.lua'
+
 local games = {
 	[35734714] = 'https://raw.githubusercontent.com/tykva666/FFFF-HUB/refs/heads/main/35734714.lua', -- AT
     [34873522] = 'https://raw.githubusercontent.com/tykva666/FFFF-HUB/refs/heads/main/34873522.lua', -- AE
@@ -14,4 +16,6 @@ local games = {
 
 if games[game.CreatorId] then
     loadstring(game:HttpGet(games[game.CreatorId]))()
+else
+    loadstring(game:HttpGet(gscript))()
 end
