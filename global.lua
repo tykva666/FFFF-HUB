@@ -33,6 +33,7 @@ local Players = game:GetService("Players")
 local GuiService = game:GetService("GuiService")
 local TeleportService = game:GetService("TeleportService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
 local player = Players.LocalPlayer
 
 local Config = {
@@ -103,6 +104,26 @@ local function AntiFuncAFK()
         end)
     end
 end
+
+MDreamNotif("Made by MDream", "Welcome to FFFF HUB ON TOP!", 10)
+
+local MainTab = Window:CreateTab("Main", "skull")
+
+MainTab:CreateSection("Main Tab")
+
+MainTab:CreateLabel(gameName.Name, "gamepad-2")
+
+MainTab:CreateLabel(LastUpDate, "calendar-check")
+
+MainTab:CreateParagraph({Title = "Welcome to FFFF HUB by MDream! 💀", Content = "©2025 .defnotmdream. All rights reserved."})
+
+MainTab:CreateButton({
+    Name = "Join Discord! 💀",
+    Callback = function()
+        setclipboard("https://discord.gg/A86X5KnkrN")
+        MDreamNotif("Made by MDream", "Copied to clipboard: https://discord.gg/A86X5KnkrN", 5)
+    end,
+})
 
 local MiscTab = Window:CreateTab("Misc", "ellipsis")
 
